@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no' />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/Style.css">
+    <link href="select2/dist/css/select2.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/alertify.min.css">
+    <link rel="stylesheet" type="text/css" href="css/alertify.rtl.min.css">
+    <link rel="stylesheet" type="text/css" href="css/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="css/default.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" type="text/css" href="css/default.rtl.min.css">
+    <link rel="stylesheet" type="text/css" href="css/semantic.rtl.min.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/toastr.css">
+    <link href="css/select2.min.css" rel="stylesheet" /><!-- 
+    <link rel="stylesheet" type="text/css" href="css/offline.css"> -->
+
+   
+</head>
+
+<body class="">
+    <div class="loader"><img src="images/Filling.gif"></div>
+    <header>
+        <nav class="navbar sticky-top navbar-light bg-light tsbs-header">
+            <ul class="left-side">
+                <li>
+                    <a class="navbar-brand detailed_toggle" href="#" data-toggle="modal" data-target="#menuModal"> <i class="fa fa-bars menu-icon" aria-hidden="true"></i> </a>
+                    <a class="navbar-brand detailed-brand tablinks" id="backButton"><i class="fa fa-angle-left detailed-icon" aria-hidden="true"></i></a> 
+                </li>
+                <li>
+                    <h1 class="header-heading" id="the_title">TeachingSBS</h1>
+                </li>
+            </ul>
+            <ul class="right-side">
+                <a>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <li>
+                        
+                            <input type="hidden" name="cmd" value="_s-xclick">
+                            <input type="hidden" name="hosted_button_id" value="3CY57ZW53HXGL">
+                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" style="display: none;">
+                            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" style="display: none;">
+
+                            <button type="submit" class="donateButton donate_Bbtn"><span>Donate Now</span><img src="images/donate-icon.png" class="donate-img" alt="donate"></button>
+                        
+                    </li>
+                </form>
+                </a>
+            </ul>
+        </nav>
+
+    </header>
+    <div id="Search" class="tabcontent">
+        <div class="content">
+            <section>
+                <div class="search-page">
+                    <div class="container">
+                        <div class="col-xs-12 search-box-heading">
+                            <h1>Select your school, <br>
+                                pick your teacher <br>
+                                and grade!</h1>
+
+                            </div>
+
+                            <div class="col-xs-12">
+
+                                <form class="profile-editable form-bold">
+
+                                    <div class="form-group teacher-search-form">
+                                        <label class="col-img-label"><img src="images/search.png" alt="search"></label>
+                                        <div class="search-form-fields">
+                                            <input type="text" class="form-control border-fields profile-fields" id="search_keyword_input" placeholder="Select School or Teacher">
+                                        </div>
+                                    </div>
+                                    <div class="form-group teacher-search-form">
+                                        <label class="col-img-label"><img src="images/city.png" alt="City"></label>
+                                        <div class="search-form-fields">
+                                            <input type="text" class="form-control border-fields profile-fields" id="search_city_input" placeholder="City">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group teacher-search-form">
+                                        <label class="col-img-label"><img src="images/state.png" alt="state"></label>
+                                        <div class="search-form-fields form-select-position" id="search_states"> 
+                                            <input type="text" id="search_state_input" class="form-control border-fields profile-fields input_empty" placeholder="State" readonly> <i class="fa fa-angle-down dropdown_icon" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group teacher-search-form">
+                                        <label class="col-img-label"><img src="images/zip.png" alt="zip"></label>
+                                        <div class="search-form-fields">
+                                            <input type="text" class="form-control border-fields profile-fields" id="search_zip_input" placeholder="Zip"  maxlength="12">
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-secondary btn-lg btn-block btn-search" id="search_btn" class="tablinks" data-dismiss="modal">Search</button>
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+            </div>
+        </div>
+
+
+        <!-- search result -->
+        <div id="Search-result" class="tabcontent">
+            <div class="content Search-result">
+                <section>
+                    <div class="search-result-school">
+
+                        <ul class="nav nav-pills mb-3 result-nav" id="pills-tab" role="tablist">
+                            <li class="nav-item padding-right-1em">
+                                <a class="nav-link active" id="pills-school-tab" data-toggle="pill" href="#pills-school" role="tab" aria-controls="pills-school" aria-expanded="true">Schools</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-teacher-tab" data-toggle="pill" href="#pills-teacher" role="tab" aria-controls="pills-teacher" aria-expanded="true">Teachers</a>
+                            </li>
+                        </ul>
+
+                        <div class="container">
+                            <div class="col-xs-12 result-tabs">
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active school_listing" id="pills-school" role="tabpanel" aria-labelledby="pills-school-tab">
+
+                                    </div>
+
+
+                                    <div class="tab-pane fade teacher_listing" id="pills-teacher" role="tabpanel" aria-labelledby="pills-teacher-tab">
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+            </div>
+        </div>
+
+
+        <!-- Profile section -->
+        <div id="Profile" class="tabcontent">
+
+            <div class="content white-content">
+                <section>
+                    <div class="profile-page profile-editable">
+                        <div class="Profile-top-section">
+                            <div class="container profile-inner-top">
+                            <form>
+                                <img src="#" id="user_profile_img" class="profile-icon img-responsive"/>
+                                <input id="my_file" style="display: none;" alt="."/>
+                                </form>
+                                <div class="profile-top-heading">
+                                    <h4 class="pro_N">Madison Wolfe</h4>
+                                    <p class="pro_R">Student</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="col-xs-12">
+
+                            </div>
+
+                            <div class="col-xs-12">
+
+                                <form class="profile-editable" id="profile-editable">
+                                    <div class="profile-row-one">
+                                        <div class="form-group Profile-form">
+                                            <div class="profile-Fname-field">
+                                                <label>First Name</label>
+                                                <input type="text"  class="form-control border-fields profile-fields f_name" placeholder="First Name" value="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group Profile-form">
+                                            <div class="profile-Lname-field">
+                                                <label>Last Name</label>
+                                                <input type="text" class="form-control border-fields profile-fields l_name" placeholder="Last Name" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="profile-row-two">
+                                        <div class="form-group Profile-form">
+                                            <div class="profile-Email-field">
+                                                <label>Email</label>
+                                                <input type="text" class="form-control border-fields profile-fields pro_E" placeholder="Email" value="" readonly >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="profile-row-three">
+                                        <div class="form-group Profile-form">
+                                            <div class="profile-country-field">
+                                                <label>City</label>
+                                                <input type="text" class="form-control border-fields profile-fields pro_C" placeholder="City" value="">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group Profile-form">
+                                            <div class="profile-state-field">
+                                                <label>State</label>
+                                                <div class="form-select-position" id="search_states_teacher">
+                                                 <input type="text" class="form-control border-fields profile-fields pro_S input_empty" id="search_state_input_teacher" placeholder="State" value="" readonly> <i class="fa fa-angle-down dropdown_icon" aria-hidden="true"></i>
+                                             </div>
+                                         </div>
+                                     </div>
+
+
+
+                                 </div>
+                             </div>
+
+                             <div class="profile-row-four profile-row-four-hide">
+                                <div class="form-group Profile-form">
+                                   <label>School</label>
+                                   <div class=" form-select-position">
+                                      <select class="ajax pro_sch" style="width : 100%" id="teacher_school1">
+
+                                      </select>
+                                     <!-- <input type="text" class="form-control border-fields profile-fields pro_sch" id="profile_input_schools" placeholder="Fame Public Charter" value="Fame Public Charter"> <i class="fa fa-angle-down dropdown_icon" aria-hidden="true"></i> -->
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="profile-row-five profile-row-five-hide">
+
+                            <div class="form-group Profile-form">
+                               <label>Grade Level</label>
+                               <div class=" form-select-position" id="profile_gradelevel">
+                                 <input type="text" class="form-control border-fields profile-fields pro_G" id="profile_input_gradelevel" placeholder="Gade Level" value="" readonly> <i class="fa fa-angle-down dropdown_icon" aria-hidden="true"></i>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="profile-row-five">
+
+                        <div class="form-group Profile-form">
+                           <label>Photo</label>
+                           <div class=" form-select-position" id="profile_gradelevel">
+                            <input type="file" name="profile_pic" class="profile_pic" id="user_edit_img">
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-secondary btn-lg btn-block btn-search Profile_Search_btn btn_profileUpdate">Update</button>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+</div>
+
+</div>
+
+
+<!-- Add Teacher -->
+<div id="Add-teacher" class="tabcontent">
+
+    <div class="content white-content">
+        <section>
+            <div class="profile-page">
+                <div class="Profile-top-section">
+                    <div class="container profile-inner-top">
+                        <div class="io">
+                            <div class="top-icon">
+                                <form>
+                                    <i class="fa fa-plus" id="btnfile" aria-hidden="true"></i>
+                                    <input type="file" class="add_teacher_image" 
+                                    id="uploadfile" name="" style="display:none;" alt="" />
+                                    <img id="top-inner-img" class="image_inner_circle" src="#" alt="" />
+                                </div>
+                            </form>
+                        </div>
+                        <div class="addTeacher-top-heading">
+
+                            <p>Click on + to upload an image</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="col-xs-12">
+
+                    </div>
+
+                    <div class="col-xs-12">
+
+                        <form class="profile-editable" id="teacherform">
+                            <div class="profile-row-one">
+                                <div class="form-group Profile-form">
+                                    <div class="profile-Tname-field">
+                                        <label>Full Name</label>
+                                        <input type="text" class="form-control border-fields profile-fields add_teacher_name" id="addteacher_name" placeholder="Full Name">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="profile-row-two">
+                                <div class="form-group Profile-form">
+                                    <div class="profile-Email-field">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control border-fields profile-fields add_teacher_email" id="teacher_email" placeholder="Email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-row-three">
+
+                                <div class="form-group Profile-form">
+                                   <label>Teacher Subject</label>
+                                   <div class=" form-select-position">
+                                      <input type="text" class="form-control border-fields profile-fields add_teacher_subject" placeholder="Subject">
+                                  </div>
+                              </div>
+
+                          </div>
+
+                          <div class="profile-row-four">
+                            <div class="form-group Profile-form">
+                               <label>School</label>
+                               <div class=" form-select-position">
+                                <select class="ajax sa" style="width : 100%" id="teacher_school">
+
+                                </select>
+                                       <!-- <input type="text" class="form-control border-fields profile-fields add_teacher_school"  id="teacher_input_school" placeholder="School" value=""> <i class="fa fa-angle-down dropdown_icon" aria-hidden="true"></i>
+                                       <input type="hidden" name="" class="school_id_fk" value="1"> -->
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="profile-row-five">
+
+                            <div class="form-group Profile-form">
+                                <label>Grade Level</label>
+                                <div class=" form-select-position" id="teacher_gradelevel">
+                                 <input type="text" class="form-control border-fields profile-fields add_teacher_grade teach g_flag" id="teacher_input_gradelevel" placeholder="Grade Level" readonly> <i class="fa fa-angle-down dropdown_icon" aria-hidden="true"></i>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="profile-row-textarea">
+                        <div class="form-group Profile-form">
+                            <div class="profile-Email-field">
+                                <label>About the teacher</label>
+                                <textarea class="form-control textarea-fields add_teacher_about" rows="3" placeholder="About Teacher"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block btn-search " id="addteacher_btn">Add Teacher</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+</div>
+</div>
+
+<!-- Edit Teacher -->
+<div id="Edit-teacher" class="tabcontent">
+
+    <div class="content white-content">
+        <section>
+            <div class="profile-page">
+                <div class="Profile-top-section">
+                    <div class="container profile-inner-top">
+                        <div class="io">
+                            <div class="top-icon">
+                                <form id="editteacherform">
+                                    <i class="fa fa-plus" id="btnfileeditteacher" aria-hidden="true"></i>
+                                    <input type="file" class="edit_teacher_image ed" id="uploadfileeditteacher" name="" style="display:none;" />
+                                    <img id="top-inner-img1" class="edit_teacher_pic image_inner_circle" src="#" alt="" />
+                                </div>
+                            
+                        </div>
+                        <div class="addTeacher-top-heading">
+
+                            <p>Click on + to upload an image</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="col-xs-12">
+
+                    </div>
+
+                    <div class="col-xs-12 profile-editable">
+
+                        <form class="profile-editable" id="editteacherform">
+                            <div class="profile-row-one">
+                                <div class="form-group Profile-form">
+                                    <div class="profile-Tname-field">
+                                        <label>Full Name</label>
+                                        <input type="text" class="form-control border-fields profile-fields edit_teacher_name" id="addteacher_name" placeholder="Full Name">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="profile-row-two">
+                                <div class="form-group Profile-form">
+                                    <div class="profile-Email-field">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control border-fields profile-fields edit_teacher_email" id="teacher_email" placeholder="Email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-row-three">
+
+                                <div class="form-group Profile-form">
+                                   <label>Teacher Subject</label>
+                                   <div class=" form-select-position">
+                                      <input type="text" class="form-control border-fields profile-fields edit_teacher_subject" placeholder="Subject">
+                                  </div>
+                              </div>
+
+                          </div>
+
+                          <div class="profile-row-four">
+                            <div class="form-group Profile-form">
+                               <label>School</label>
+                               <div class=" form-select-position">
+
+                                 <select class="ajax edit_teach" style="width : 100%" id="teacher_school ">
+
+                                 </select>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="profile-row-five">
+
+                        <div class="form-group Profile-form">
+                            <label>Grade Level</label>
+                            <div class=" form-select-position" id="edit_teacher_gradelevel">
+                             <input type="text" class="form-control border-fields profile-fields edit_teacher_grade g_flag GL" id="teacher_input_gradelevel1" placeholder="Grade Level" value="" readonly> <i class="fa fa-angle-down dropdown_icon" aria-hidden="true"></i>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="profile-row-textarea">
+                    <div class="form-group Profile-form">
+                        <div class="profile-Email-field">
+                            <label>About the teacher</label>
+                            <textarea class="form-control textarea-fields edit_teacher_about" rows="3" placeholder="About Teacher"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-secondary btn-lg btn-block btn-search " id="btn_editteacher">Update Teacher</button>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+</div>
+</div>
+
+
+<!-- Top Rated Teachers -->
+<div id="Top-teachers" class="tabcontent">
+
+    <div class="content Search-result">
+        <section>
+            <div class="search-result-teacher">
+
+                <ul class="nav nav-pills mb-3 result-nav" id="pills-tab-top" role="tablist">
+                    <li class="nav-item padding-right-1em">
+                        <a class="nav-link active" id="pills-top-school-tab" data-toggle="pill" href="#pills-top-school" role="tab" aria-controls="pills-top-school" aria-expanded="true">By Parents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-teacher-top-tab" data-toggle="pill" href="#pills-top-teacher" role="tab" aria-controls="pills-top-teacher" aria-expanded="true">By Students</a>
+                    </li>
+                </ul>
+                <div class="container">
+                    <div class="col-xs-12 result-tabs">
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active toppteachers" id="pills-top-school" role="tabpanel" aria-labelledby="pills-school-top-tab">
+
+
+
+
+                            </div>
+
+                            <div class="tab-pane fade topsteachers" id="pills-top-teacher" role="tabpanel" aria-labelledby="pills-teacher-top-tab">
+
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- about pages -->
+
+<div id="About-pages" class="tabcontent">
+    <div class="about-bg-section">
+        <div class="content Search-result about-content">
+            <section>
+                <div class="search-result-teacher">
+
+                    <ul class="nav nav-pills about-mb-3 result-nav" id="pills-about-tab-detail" role="tablist">
+                        <li class="nav-item about-item">
+                            <a class="nav-link active aboutClass" id="pills-about-tab" data-toggle="pill" href="#pills-about" role="tab" aria-controls="pills-about" aria-expanded="true">About <br>TSBS</a>
+                        </li>
+                        <li class="nav-item privacy-item">
+                            <a class="nav-link privacy_policy" id="pills-privacy-tab" data-toggle="pill" href="#pills-privacy" role="tab" aria-controls="pills-privacy" aria-expanded="true">Privacy <br>Policy</a>
+                        </li>
+                        <li class="nav-item term-item">
+                            <a class="nav-link term_item terms" id="pills-terms-tab" data-toggle="pill" href="#pills-terms" role="tab" aria-controls="pills-terms" aria-expanded="true">Terms of<br> Use</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab-detail">
+                            <div class="container">
+                                <div class="col-xs-12 result-tabs">
+                                    <img src="images/TSBS_logo.png" alt="logo" class="about-logo">
+                                    <div class="about_content">
+                                       <p></p>
+                                   </div>
+
+                               </div>
+
+                           </div>
+                       </div>
+
+                       <div class="tab-pane fade" id="pills-privacy" role="tabpanel" aria-labelledby="pills-privacy-tab">
+                        <div class="privacy-bg">
+
+                            <div class="container">
+                                <div class="col-xs-12 result-tabs">
+                                    <img src="images/TSBS_logo.png" alt="logo" class="about-logo">
+                                    <div class="privacy_content">
+                                        <p></p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane fade" id="pills-terms" role="tabpanel" aria-labelledby="pills-terms-tab">
+
+                      <div class="terms-bg">
+
+                        <div class="container">
+                            <div class="col-xs-12 result-tabs">
+                            <img src="images/TSBS_logo.png" alt="logo" class="about-logo">
+                                <div class="terms_content">
+                                    <p></p>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+</div>
+</div>
+
+
+
+<!--  teacher Detail -->
+<div id="Teacher-detail" class="tabcontent">
+    <div class="content teacher-dt-result">
+        <section>
+            <div class="search-result-teacher">
+
+                <ul class="nav nav-pills detail-mb-3 result-nav" id="pills-tab-detail" role="tablist">
+                    <li class="nav-item about-item">
+                        <a class="nav-link active" id="pills-teacher-detail-tab" data-toggle="pill" href="#pills-teacher-detail" role="tab" aria-controls="pills-detail" aria-expanded="true">Teacher <br> Detail</a>
+                    </li>
+                    <li class="nav-item privacy-item">
+                        <a class="nav-link" id="pills-std-grading-tab" data-toggle="pill" href="#pills-std-grading" role="tab" aria-controls="pills-std-grading" aria-expanded="true">Students <br>Grading</a>
+                    </li>
+                    <li class="nav-item term-item">
+                        <a class="nav-link" id="pills-p-grading-tab" data-toggle="pill" href="#pills-parent-grading" role="tab" aria-controls="pills-parent-grading" aria-expanded="true">Parents <br>Grading</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-teacher-detail" role="tabpanel" aria-labelledby="pills-teacher-detail-tab">
+
+                        <div class="teacher-detail-content">
+                            <div class="white-oval-img">
+                                <img src="images/teach-white-bg.png" style="width:100%;">
+                            </div>
+                        </div>
+
+                        <div class="container bg-white">
+
+                            <div class="col-xs-12 Teacher-tab-detail teachr_detail ">
+
+                                <h1 class="teacher_n"></h1>
+                                <span>Grade: </span><p class="teacher_grd"></p>
+                                <span>Subject: </span><p class="teacher_sub"></p>
+                                <span>Email: </span><p class="teacher_em"></p>
+                                <span>School: </span><p class="teacher_sch text-uppercase"></p>
+                                <!-- <button type="button" class="btn btn-secondary btn-sm pull-right btn_edit_teacher">Edit</button> -->
+                                <div class="btn_appendTeacher"> </div>
+                                <input type="hidden" id="get_teacherID">
+                                <div class="search-buttons-layout">
+                                    <button type="button" class="btn btn-secondary btn-lg btn-student-grading">
+                                        <p class="btn-S-content">Student
+                                            <br>grading
+                                            <p class="btn-S-grade S-grade"></p>
+                                        </p>
+                                    </button>
+                                    <button type="button" class="btn btn-secondary btn-lg btn-teacher-grading">
+                                    <p class="btn-S-content">parent
+                                            <br>grading
+                                            <p class="btn-S-grade btn-P-grade"></p>
+                                        </p>
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <div class="detail-about-content">
+                                <h1>About</h1>
+                                <p class="teacher_abt"></p>
+                                <button type="button" class="btn btn-secondary btn-lg btn-block btn-search" id="gradeM" data-dismiss="modal">Grade the teacher</button>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-std-grading" role="tabpanel" aria-labelledby="pills-std-grading-tab">
+                        <div class="container std_section">
+                                <!-- <div class="col-xs-12 teacher-detail-section std-grading-section">
+                                    <div class="col-xs-4 teacher-icon">
+                                        <div class="Top-teacher-icon" style="background: url(images/oli.jpg);"></div>
+                                    </div>
+
+                                    <div class="col-xs-8 Teacher-tab-detail top-parents-detail">
+                                        <h1>Oliver hudson</h1>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+
+                                        <div class="search-buttons-layout">
+
+                                            <button type="button" class="btn btn-secondary btn-lg btn-student-grading">
+                                                <p class="btn-S-content">Student
+                                                    <br>grading
+                                                    <p class="btn-S-grade">A+</p>
+                                                </p>
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 teacher-detail-section std-grading-section">
+                                    <div class="col-xs-4 teacher-icon">
+                                        <div class="Top-teacher-icon" style="background: url(images/isa.jpg);"></div>
+                                    </div>
+
+                                    <div class="col-xs-8 Teacher-tab-detail top-parents-detail">
+                                        <h1>isabella fortuna</h1>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+
+                                        <div class="search-buttons-layout">
+
+                                            <button type="button" class="btn btn-secondary btn-lg btn-student-grading">
+                                                <p class="btn-S-content">Student
+                                                    <br>grading
+                                                    <p class="btn-S-grade">A+</p>
+                                                </p>
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 teacher-detail-section std-grading-section">
+                                    <div class="col-xs-4 teacher-icon">
+                                        <div class="Top-teacher-icon" style="background: url(images/ame.jpg);"></div>
+                                    </div>
+
+                                    <div class="col-xs-8 Teacher-tab-detail top-parents-detail">
+                                        <h1>amelia warner</h1>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+
+                                        <div class="search-buttons-layout">
+
+                                            <button type="button" class="btn btn-secondary btn-lg btn-student-grading">
+                                                <p class="btn-S-content">Student
+                                                    <br>grading
+                                                    <p class="btn-S-grade">A+</p>
+                                                </p>
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div> -->
+                            </div>
+
+                        </div>
+
+                        <div class="tab-pane fade" id="pills-parent-grading" role="tabpanel" aria-labelledby="pills-p-grading-tab">
+
+                            <div class="container prt_section">
+                               <!--  <div class="col-xs-12 teacher-detail-section std-grading-section">
+                                    <div class="col-xs-4 teacher-icon">
+                                        <div class="Top-teacher-icon" ></div>
+                                    </div>
+
+                                    <div class="col-xs-8 Teacher-tab-detail top-parents-detail">
+                                        <h1>george clooney</h1>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+
+                                        <div class="search-buttons-layout">
+
+                                            <button type="button" class="btn btn-secondary btn-lg btn-teacher-grading">
+                                                <p class="btn-S-content">Parents
+                                                    <br>grading
+                                                </p>
+                                                <p class="btn-S-grade">A+</p>
+                                                <p></p>
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 teacher-detail-section std-grading-section">
+                                    <div class="col-xs-4 teacher-icon">
+                                        <div class="Top-teacher-icon" style="background: url(images/soph.jpg);"></div>
+                                    </div>
+
+                                    <div class="col-xs-8 Teacher-tab-detail top-parents-detail">
+                                        <h1>sophie turner</h1>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+
+                                        <div class="search-buttons-layout">
+
+                                            <button type="button" class="btn btn-secondary btn-lg btn-teacher-grading">
+                                                <p class="btn-S-content">Parents
+                                                    <br>grading
+                                                </p>
+                                                <p class="btn-S-grade">A+</p>
+                                                <p></p>
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 teacher-detail-section std-grading-section">
+                                    <div class="col-xs-4 teacher-icon">
+                                        <div class="Top-teacher-icon" style="background: url(images/emily.jpg);"></div>
+                                    </div>
+
+                                    <div class="col-xs-8 Teacher-tab-detail top-parents-detail">
+                                        <h1>emily blunt</h1>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+
+                                        <div class="search-buttons-layout">
+
+                                            <button type="button" class="btn btn-secondary btn-lg btn-teacher-grading">
+                                                <p class="btn-S-content">Parents
+                                                    <br>grading
+                                                </p>
+                                                <p class="btn-S-grade">A+</p>
+                                                <p></p>
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div> -->
+                            </div>
+
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+
+        </div>
+
+        <!-- School detail -->
+        <div id="School-detail" class="tabcontent">
+
+            <div class="content teacher-dt-result">
+                <section>
+                    <div class="search-result-teacher">
+
+                        <div class="school-detail-content sch_bg">
+                            <div class="white-oval-img">
+                                <img src="images/teach-white-bg.png" style="width:100%;">
+                            </div>
+                        </div>
+
+                        <div class="container bg-white">
+
+                            <div class="col-xs-12 Teacher-tab-detail school_dtail teachr_detail">
+
+                                <h1 class="sch_name"></h1>
+                                <span>Address:</span><p class="sch_address text-uppercase"></p>
+
+                                <span>Phone:</span><p class="sch_phone"></p>
+                                <span>Website:</span><p class="lower-caps sch_url"></p>
+                                <div class="sch_btn"><button type="button" class="btn btn-secondary btn-sm pull-right btn_edit_school">Edit</button></div>
+                            </div>
+
+                            <div class="detail-about-content">
+                                <h1>our teachers</h1>
+                            </div>
+                            <div class="col-xs-12 School-detail-section padding-2em schTeacher_list">
+                           <!--  <div class="col-xs-4 school-icon v">
+                                <img src="images/Teaching-s.png" alt="school img" class="iconSchool">
+                                <div class="Top-teacher-icon" style="background: url(images/Teacher-io.png);"></div>
+                            </div>
+
+                            <div class="col-xs-8 school-tab-detail school-teachr-dt">
+                                <h1>Alexandra Fuentes</h1>
+                                <p><span>Subject:</span> Handwork or handcrafts</p>
+                                <p class="lower-caps"><span>Email:</span> alexander120@gmail.com</p>
+                                <p><span>School:</span> lapoynor j h</p>
+                            </div> -->
+
+                        </div>
+
+                        <!-- <button type="button" class="btn btn-secondary btn-lg btn-block btn-search margin-top-2em" data-toggle="modal" data-target="#gradingModal" data-dismiss="modal">Grade the teacher</button> -->
+
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Add School -->
+
+    <div id="add-School" class="tabcontent">
+        <div class="content white-content">
+            <section>
+                <div class="profile-page">
+                    <div class="Profile-top-section">
+                        <div class="container profile-inner-top">
+                            <div class="io">
+                                <div class="top-icon">
+                                    <form>
+                                        <i class="fa fa-plus" id="btnfileSchool" aria-hidden="true"></i>
+                                        <input type="file" id="uploadfileSchool" class="add_school_logo" style="display:none;" />
+                                        <img id="top-inner-img-add-sc" class="image_inner_circle" src="#" alt="" />
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="addTeacher-top-heading">
+
+                                <p>Click on + to upload an image</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="col-xs-12">
+
+                        </div>
+
+                        <div class="col-xs-12">
+                            <form class="profile-editable" id="schoolform">
+                                <div class="profile-row-one">
+                                    <div class="form-group Profile-form">
+                                       <label>School name</label>
+                                       <div class=" form-select-position ss">
+                                         <input type="text" class="form-control border-fields profile-fields add_school_name" id="school_name" placeholder="School Name">
+                                     </div>
+                                     <span class="bait_spanName"></span>
+                                 </div>
+
+                             </div>
+                             <div class="profile-row-two">
+                                <div class="form-group Profile-form">
+                                    <div class="profile-Email-field">
+                                        <label>Contact Number</label>
+                                        <input type="text" class="form-control border-fields profile-fields add_school_number" id="number" placeholder="Contact Number">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-row-two">
+                                <div class="form-group Profile-form">
+                                    <div class="profile-Email-field">
+                                        <label>School Website</label>
+                                        <input type="text" class="form-control border-fields profile-fields add_school_url" id="url" placeholder="www.xyz.com">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="profile-row-three">
+                                <div class="form-group Profile-form">
+                                    <div class="profile-country-field">
+                                        <label>City</label>
+                                        <input type="text" class="form-control border-fields profile-fields add_school_city" id="city" placeholder="City">
+                                    </div>
+                                </div>
+
+                                <div class="form-group Profile-form">
+                                    <div class="profile-state-field">
+                                        <label>State</label>
+                                        <div class=" form-select-position" id="search_states_school_1">
+                                         <input type="text" class="form-control border-fields profile-fields add_school_state input_empty" id="state_id_1" placeholder="State" readonly> <i class="fa fa-angle-down dropdown_icon" aria-hidden="true"></i>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="profile-row-two">
+                            <div class="form-group Profile-form">
+                                <div class="profile-Email-field">
+                                    <label>Zip</label>
+                                    <input type="text" class="form-control border-fields profile-fields add_school_zip" id="school_zip" placeholder="Zip" maxlength="12">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-row-two">
+                            <div class="form-group Profile-form">
+                                <div class="profile-Email-field">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control border-fields profile-fields add_school_address text-uppercase" id="school_address" placeholder="Address">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-row-textarea">
+                            <div class="form-group Profile-form">
+                                <div class="profile-Email-field">
+                                    <label>About the School</label>
+                                    <textarea class="form-control textarea-fields add_school_about" rows="3" placeholder="About School"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-lg btn-block btn-search"  id="addschool_btn">Add School</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+</div>
+</div>
+
+<!-- Edit School -->
+
+<div id="Edit-School" class="tabcontent">
+    <div class="content white-content">
+        <section>
+            <div class="profile-page">
+                <div class="Profile-top-section">
+                    <div class="container profile-inner-top">
+                        <div class="io">
+                            <div class="top-icon">
+                                <form id="edit_schoolform">
+                                    <i class="fa fa-plus" id="btnfileeditSchool" aria-hidden="true"></i>
+                                    <input type="file" id="uploadfileeditSchool" class="edit_school_logo" style="display:none;" />
+                                    <img id="top-inner-img-edit-sc" class="edit_school_pic image_inner_circle" src="#" alt="" />
+                                </div>
+                            
+                        </div>
+                        <div class="addTeacher-top-heading">
+
+                            <p>Click on + to upload an image</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="col-xs-12">
+
+                    </div>
+
+                    <div class="col-xs-12">
+                        <form class="profile-editable" >
+                            <div class="profile-row-one">
+                                <div class="form-group Profile-form">
+                                   <label>School name</label>
+                                   <div class=" form-select-position ss" >
+
+                                     <input type="text" class="form-control border-fields profile-fields edit_school_name" id="school_name" placeholder="School Name">
+                                 </div>
+                                 <span class="bait_spanName"></span>
+                             </div>
+
+                         </div>
+                         <div class="profile-row-two">
+                            <div class="form-group Profile-form">
+                                <div class="profile-Email-field">
+                                    <label>Contact Number</label>
+                                    <input type="text" class="form-control border-fields profile-fields edit_school_number" id="number" placeholder="Contact Number">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-row-two">
+                            <div class="form-group Profile-form">
+                                <div class="profile-Email-field">
+                                    <label>School Website</label>
+                                    <input type="text" class="form-control border-fields profile-fields edit_school_url" id="url" placeholder="www.xyz.com">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="profile-row-three">
+                            <div class="form-group Profile-form">
+                                <div class="profile-country-field">
+                                    <label>City</label>
+                                    <input type="text" class="form-control border-fields profile-fields edit_school_city" id="city" placeholder="city">
+                                </div>
+                            </div>
+
+                            <div class="form-group Profile-form">
+                                <div class="profile-state-field">
+                                    <label>State</label>
+                                    <div class=" form-select-position" id="search_states_school">
+                                     <input type="text" class="form-control border-fields profile-fields edit_school_state input_empty" id="state_id" placeholder="State" readonly> <i class="fa fa-angle-down dropdown_icon" aria-hidden="true"></i>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="profile-row-two">
+                        <div class="form-group Profile-form">
+                            <div class="profile-Email-field">
+                                <label>Zip</label>
+                                <input type="text" class="form-control border-fields profile-fields edit_school_zip" id="school_zip" placeholder="Zip"  maxlength="12">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-row-two">
+                        <div class="form-group Profile-form">
+                            <div class="profile-Email-field">
+                                <label>Address</label>
+                                <input type="text" class="form-control border-fields profile-fields edit_school_address text-uppercase" id="school_address" placeholder="Address">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-row-textarea">
+                        <div class="form-group Profile-form">
+                            <div class="profile-Email-field">
+                                <label>About the School</label>
+                                <textarea class="form-control textarea-fields edit_school_about" rows="3" placeholder="About School"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block btn-search"  id="updateschool_btn">Update School</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+</div>
+</div>
+
+<div id="faq" class="tabcontent" style="display: none; padding-top: 100px; padding-left: 20px; padding-right: 20px;">
+
+</div>
+<!-- Menu modal -->
+
+<div class="modal fade" id="menuModal" tabindex="-1" role="dialog" aria-labelledby="menuModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-shadow">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-xs-12 menu-modal-detail" id="menu_pro">
+                    <a onclick="openCity(event, 'Profile','Profile')"  data-title="search" data-dismiss="modal">
+                    <img alt="Profile img" class="iconTeacher pro_img">
+                    <h1 class="pro_name"></h1></a>
+                    <p class="pro_email"></p>
+                </div>
+                <div class="col-xs-12 menu-listing">
+                    <div class="tab">
+
+                        <ul>
+                            <li><a class="tablinks loginClass load" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</a></li>
+                            <li><a class="tablinks load" onclick="openCity(event, 'Search','TeachingSBS')" data-title="search" data-dismiss="modal">Search</a></li>
+                            <li><a class="tablinks load" id="liaddteacher" data-dismiss="modal">Add teacher</a></li>
+                            <li><a class="tablinks load" id="liaddschool" data-dismiss="modal">add school</a></li>
+                            <li><a class="tablinks" id="litopteachers" onclick="openCity(event, 'Top-teachers','Top Teachers')" data-dismiss="modal">top rated teachers</a></li>
+                            <li><a class="tablinks aboutClass" onclick="openCity(event, 'About-pages','About')" data-dismiss="modal">About</a></li>
+                            <!-- <li><a class="tablinks faqClass" onclick="openCity(event, 'faq', 'FAQs')" data-dismiss="modal">FAQs</a></li> -->
+                            <li>
+                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                    <input type="hidden" name="cmd" value="_s-xclick">
+                                    <input type="hidden" name="hosted_button_id" value="3CY57ZW53HXGL">
+                                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" style="display: none;">
+                                    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" style="display: none;">
+
+                                    <button type="submit" class="donateButton tablinks lower_donate_btn">Donate Now</button>
+                                </form>
+                            </li>
+                            <li><a class="tablinks signoutClass" id="sign_out_btn" data-dismiss="modal">Sign Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="social-icon">
+
+                    <a href="https://www.facebook.com/Teaching-Side-By-Side-482924075388696" target="_blank" ><img src="images/fbb.png" alt="Facebook" class="fb-icon"></a>
+                    <a href="https://www.twitter.com/teachingsbs" target="_blank" ><img src="images/tw.png" alt="Twitter" class="tw-icon" ></a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Login modal -->
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="menuModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close dismiss" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body login-body">
+                <div class="container">
+                    <div class="col-xs-12 login-heading">
+                        <h1>Login</h1>
+                    </div>
+
+                    <form class="profile-editable">
+                        <div class="profile-row-one">
+                            <div class="form-group Profile-form">
+                                <div class="profile-Tname-field">
+                                    <label>Email</label>
+                                    <input type="text" class="form-control border-fields profile-fields login_email" placeholder="Email">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="profile-row-two">
+                            <div class="form-group Profile-form">
+                                <div class="profile-Email-field">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control border-fields profile-fields login_password" placeholder="..........">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal_footer">
+                            <a href="#" class="forgot-passwrd" data-toggle="modal" data-target="#forgotModal" data-dismiss="modal">Forgot Password?</a>
+                            <button type="button" class="btn btn-secondary btn-lg btn-block btn-search login_btn">Login</button>
+                            <p class="new-user-footer">New user? <a href="#" class="register-passwrd" data-toggle="modal" data-target="#registerModal" data-dismiss="modal">Register</a></p>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- forgot modal -->
+
+<div class="modal fade" id="forgotModal" tabindex="-1" role="dialog" aria-labelledby="menuModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body login-body">
+                <div class="container">
+                    <div class="col-xs-12 login-heading">
+                        <h1>Forgot<br> Password</h1>
+                    </div>
+
+                    <form class="profile-editable">
+                        <div class="profile-row-two">
+                            <div class="form-group Profile-form">
+                                <div class="profile-Email-field">
+                                    <label>Email Address</label>
+                                    <input type="email" class="form-control border-fields profile-fields forgot_email" placeholder="Email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal_footer">
+                            <button type="button" class="btn btn-secondary btn-lg btn-block btn-search forgot_btn" data-toggle="modal" >Submit</button>
+                            <p class="new-user-footer">Already have an account? <a href="#" class="register-passwrd" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</a></p>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Send code -->
+
+<div class="modal fade" id="codeModal" tabindex="-1" role="dialog" aria-labelledby="menuModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-shadow">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body login-body">
+                <div class="container">
+                    <div class="col-xs-12 login-heading">
+                        <h1>Insert<br> Code</h1>
+                    </div>
+
+                    <form class="profile-editable">
+
+
+                        <div class="profile-row-two">
+                            <div class="form-group Profile-form">
+                                <div class="profile-Email-field">
+                                    <label>Your Code</label>
+                                    <input type="text" class="form-control border-fields profile-fields code" placeholder="Code">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal_footer">
+
+                            <button type="button" class="btn btn-secondary btn-lg btn-block btn-search code_btn" data-toggle="modal">Submit</button>
+                            <p class="new-user-footer">Already have an account? <a href="#" class="register-passwrd" data-toggle="modal" data-target="#loginModal" data-dismiss="modal" >Login</a></p>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Reset-password -->
+
+<div class="modal fade" id="resetModal" tabindex="-1" role="dialog" aria-labelledby="menuModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-shadow">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body login-body">
+                <div class="container">
+                    <div class="col-xs-12 login-heading">
+                        <h1>Reset<br> Password</h1>
+                    </div>
+
+                    <form class="profile-editable">
+                        <div class="profile-row-two">
+                            <div class="form-group Profile-form">
+                                <div class="profile-Email-field">
+                                    <label>New Password</label>
+                                    <input type="password" class="form-control border-fields profile-fields fPassword" placeholder="..........">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-row-two">
+                            <div class="form-group Profile-form">
+                                <div class="profile-Email-field">
+                                    <label>Confirm Password</label>
+                                    <input type="password" class="form-control border-fields profile-fields cPassword" placeholder="..........">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal_footer">
+
+                            <button type="button" class="btn btn-secondary btn-lg btn-block btn-search reset_password">Submit</button>
+                            <p class="new-user-footer">Already have an account? <a href="#" class="register-passwrd" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</a></p>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Register modal -->
+
+<div class="modal fade" id="registerModal" role="dialog" aria-labelledby="menuModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body login-body">
+                <div class="container">
+                    <div class="col-xs-12 login-heading">
+                        <h1>Register</h1>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <ul class="nav nav-pills justify-content-center" id="register_Navs" role="tablist">
+                            <li class="nav-item nav-student">
+                                <a class="nav-link active role register_role" id="student" data-toggle="tab" value="student" href="#student-register" role="tab">Student</a>
+                            </li>
+                            <li class="nav-item nav-teacher">
+                                <a class="nav-link role register_role" id="parent" data-toggle="tab" value="parent"  href="#parent-register" role="tab">Parent</a>
+                            </li>
+                        </ul>
+                        <form class="profile-editable">
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="student-register" role="tabpanel">
+
+                                    <div class="profile-row-one">
+                                        <div class="form-group Profile-form">
+                                            <div class="profile-Fname-field">
+                                                <label>First Name</label>
+                                                <input type="text" class="form-control border-fields profile-fields" placeholder="First Name" id="sfirst_name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group Profile-form">
+                                            <div class="profile-Lname-field">
+                                                <label>Last Name</label>
+                                                <input type="text" class="form-control border-fields profile-fields" placeholder="Last Name" id="slast_name">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-row-three">
+                                        <div class="form-group Profile-form">
+                                            <div class="profile-country-field">
+                                                <label>City</label>
+                                                <input type="text" class="form-control border-fields profile-fields" placeholder="City" id="sregister_city">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group Profile-form">
+                                            <div class="profile-state-field">
+                                                <label>State</label>
+                                                <div class=" form-select-position" id="search_states_register">
+                                                 <input type="text" class="form-control border-fields profile-fields sregister_state input_empty sts" id="search_state_input_register" placeholder="State" value="" readonly> <i class="fa fa-angle-down dropdown_icon" aria-hidden="true"></i>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <div class="profile-row-four">
+                                    <div class="form-group Profile-form">
+                                        <label>School</label>
+                                        <div >
+                                         <select class="ajax pro_sch1" style="width : 100%" id="teacher_school1">
+
+                                         </select>
+                                         <!--  <input type="text" class="form-control border-fields profile-fields sSchool" id="register_input_schools" placeholder="Fame Public Charter" value="Fame Public Charter"> <i class="fa fa-angle-down dropdown_icon" aria-hidden="true"></i> -->
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="profile-row-five">
+
+                                <div class="form-group Profile-form">
+                                   <label>Grade Level</label>
+                                   <div class=" form-select-position" id="register_gradelevel_select">
+
+                                     <input type="text" class="form-control border-fields sg profile-fields" placeholder="Grade" id="sgrade" value="" readonly=""> <i class="fa fa-angle-down dropdown_icon" aria-hidden="true"></i>
+                                 </div>
+                             </div>
+                         </div>
+
+                         <div class="profile-row-two">
+                            <div class="form-group Profile-form">
+                                <div class="profile-Email-field">
+                                    <label>Email</label>
+                                    <input type="text" class="form-control border-fields profile-fields" placeholder="Email" id="semail">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-row-fiv">
+                            <div class="form-group Profile-form">
+                                <div class="profile-Email-field">
+                                    <label>Passsword</label>
+                                    <input type="password" class="form-control border-fields profile-fields" placeholder=".........." id="sregister_password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-row-six">
+                            <div class="form-group Profile-form">
+                                <div class="profile-Email-field">
+                                    <label>Confirm Passsword</label>
+                                    <input type="password" class="form-control border-fields profile-fields" placeholder=".........." id="sregister_confirm_password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal_footer">
+
+                            <button type="button" class="btn btn-secondary btn-lg btn-block btn-search sRegister_btn">Register</button>
+                            <p class="new-user-footer">Already have an account? <a href="#" class="register-passwrd new_regis_btn" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</a></p>
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane" id="parent-register" role="tabpanel">
+
+                        <div class="profile-row-one">
+                            <div class="form-group Profile-form">
+                                <div class="profile-Fname-field">
+                                    <label>First Name</label>
+                                    <input type="text" class="form-control border-fields profile-fields" placeholder="First Name" id="pfirst_name">
+                                </div>
+                            </div>
+                            <div class="form-group Profile-form">
+                                <div class="profile-Lname-field">
+                                    <label>Last Name</label>
+                                    <input type="text" class="form-control border-fields profile-fields" placeholder="Last Name" id="plast_name">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="profile-row-three">
+                            <div class="form-group Profile-form">
+                                <div class="profile-country-field">
+                                    <label>City</label>
+                                    <input type="text" class="form-control border-fields profile-fields" placeholder="City" id="pregister_city">
+                                </div>
+                            </div>
+
+                            <div class="form-group Profile-form">
+                                <div class="profile-state-field">
+                                    <label>State</label>
+                                    <div class=" form-select-position" id="search_states_parent_register">
+                                     <input type="text" class="form-control border-fields profile-fields pregister_state input_empty" id="search_input_parent_register" placeholder="State" value="" readonly> <i class="fa fa-angle-down dropdown_icon" aria-hidden="true"></i>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+
+                     <div class="profile-row-two">
+                        <div class="form-group Profile-form">
+                            <div class="profile-Email-field">
+                                <label>Email</label>
+                                <input type="text" class="form-control border-fields profile-fields" placeholder="Email" id="pemail">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-row-five">
+                        <div class="form-group Profile-form">
+                            <div class="profile-Email-field">
+                                <label>Passsword</label>
+                                <input type="password" class="form-control border-fields profile-fields" placeholder=".........." id="pregister_password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-row-six">
+                        <div class="form-group Profile-form">
+                            <div class="profile-Email-field">
+                                <label>Confirm Passsword</label>
+                                <input type="password" class="form-control border-fields profile-fields" placeholder=".........." id="pregister_confirm_password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal_footer">
+
+                        <button type="button" class="btn btn-secondary btn-lg btn-block btn-search reg_btn">Register</button>
+                        <p class="new-user-footer">Already have an account? <a href="#" class="register-passwrd" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</a></p>
+                    </div>
+
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- School select box -->
+<div class="modal fade" id="schoolModal" tabindex="-1" role="dialog" aria-labelledby="menuModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body selectbox-body">
+                <div class="container">
+                    <div class="col-xs-12 login-heading">
+                        <h1>Schools</h1>
+                    </div>
+
+                    <form class="profile-editable">
+                        <div class="col-xs-12">
+                            <div id="custom-search-input">
+                                <div class="input-group">
+                                    <input type="search" class="form-control input-lg search-input-field" placeholder="Search School" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 school-selecbox-listing">
+                            <ul  class="schools_popup">
+                                <li><p class="pull-left">Tillett</p><i class="fa fa-check-circle pull-right" aria-hidden="true"></i></li>
+                                <li><p class="pull-left">Santa fe</p><i class="fa fa-check-circle pull-right" aria-hidden="true"></i></li>
+                                <li><p class="pull-left">South fork</p><i class="fa fa-check-circle pull-right" aria-hidden="true"></i></li>
+                                <li class="color-change"><p class="pull-left">Fame public charter</p><i class="fa fa-check-circle pull-right" aria-hidden="true"></i></li>
+                                <li><p class="pull-left">Wommack</p><i class="fa fa-check-circle pull-right" aria-hidden="true"></i></li>
+                                <li><p class="pull-left">Poage</p><i class="fa fa-check-circle pull-right" aria-hidden="true"></i></li>
+                                <li><p class="pull-left">Casey college</p><i class="fa fa-check-circle pull-right" aria-hidden="true"></i></li>
+                                <li><p class="pull-left">Heavenridge</p><i class="fa fa-check-circle pull-right" aria-hidden="true"></i></li>
+                                <li><p class="pull-left">Hickory grove</p><i class="fa fa-check-circle pull-right" aria-hidden="true"></i></li>
+                                <li><p class="pull-left">Long branch</p><i class="fa fa-check-circle pull-right" aria-hidden="true"></i></li>
+
+                                <li><p class="pull-left">green well</p><i class="fa fa-check-circle pull-right" aria-hidden="true"></i></li>
+                                <li><p class="pull-left">CRADLE OF SCIENCE</p><i class="fa fa-check-circle pull-right" aria-hidden="true"></i></li>
+                            </ul>
+                        </div>
+                    </form>
+                    <div class="modal_footer">
+                        <button type="button" class="btn btn-secondary btn-lg btn-block btn-search tablinks" id="liaddschool" data-dismiss="modal">Add New School</button>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Grade select box -->
+ <!-- <div class="modal fade" id="gradeModal" tabindex="-1" role="dialog" aria-labelledby="menuModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-shadow">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body selectbox-body">
+                    <div class="container">
+                        <div class="col-xs-12 login-heading">
+                            <h1>Grade</h1>
+                        </div>
+
+                        <form class="profile-editable">
+                            <div class="col-xs-12">
+                                    <div id="custom-search-input">
+                                        <div class="input-group">
+                                            <input type="search" class="form-control input-lg search-input-field" placeholder="Search Grade" />
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-xs-12 school-selecbox-listing">
+                                <ul>
+                                    <li><p class="pull-left">Sixth</p><i class="fa fa-check-circle pull-right" aria-hidden="true"></i></li>
+                                    <li><p class="pull-left">Seventh</p><i class="fa fa-check-circle pull-right" aria-hidden="true"></i></li>
+                                    <li><p class="pull-left">Eighth</p><i class="fa fa-check-circle pull-right" aria-hidden="true"></i></li>
+                                    <li class="color-change">
+                                    <p class="pull-left">Ninth</p><i class="fa fa-check-circle pull-right" aria-hidden="true"></i></li>
+                                    <li><p class="pull-left">Tenth</p><i class="fa fa-check-circle pull-right" aria-hidden="true"></i></li>
+                                    
+                                   
+                            </div>
+                                </form>
+                            <div class="modal_footer">
+                                <button type="button" class="btn btn-secondary btn-lg btn-block btn-search">Add School</button>
+                            </div>
+                        
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Grade Level select box -->
+    <div class="modal fade" id="gradelevelModal" tabindex="-1" role="dialog" aria-labelledby="menuModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-shadow">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body selectbox-body">
+                    <div class="container">
+                        <div class="col-xs-12 login-heading">
+                            <h1>Grade Level</h1>
+                        </div>
+
+                        <form class="profile-editable">
+                           <!--  <div class="col-xs-12">
+                                    <div id="custom-search-input">
+                                        <div class="input-group">
+                                            <input type="search" class="form-control input-lg search-input-field gradeLevel" placeholder="Search Grade Level"/>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="col-xs-12 school-selecbox-listing">
+                                    <ul class="gradelevel_popup">
+                                        <li>
+                                            <p class="pull-left multipleGrades"> High School</p>
+                                            <i class="fa fa-check-circle pull-right" aria-hidden="true"></i>
+                                        </li>
+                                        <li>
+                                            <p class="pull-left multipleGrades"> Middle School</p>
+                                            <i class="fa fa-check-circle pull-right" aria-hidden="true"></i>
+                                        </li>
+                                        <li>
+                                            <p class="pull-left multipleGrades"> Kindergarten</p>
+                                            <i class="fa fa-check-circle pull-right" aria-hidden="true"></i>
+                                        </li>
+                                        <li>
+                                            <p class="pull-left multipleGrades"> 1st</p>
+                                            <i class="fa fa-check-circle pull-right" aria-hidden="true"></i>
+                                        </li>
+                                        <li>
+                                            <p class="pull-left multipleGrades"> 2nd</p>
+                                            <i class="fa fa-check-circle pull-right" aria-hidden="true"></i>
+                                        </li>
+                                        <li>
+                                            <p class="pull-left multipleGrades"> 3rd</p>
+                                            <i class="fa fa-check-circle pull-right" aria-hidden="true"></i>
+                                        </li>
+                                        <li>
+                                            <p class="pull-left multipleGrades"> 4th</p>
+                                            <i class="fa fa-check-circle pull-right" aria-hidden="true"></i>
+                                        </li>
+                                        <li>
+                                            <p class="pull-left multipleGrades"> 5th</p>
+                                            <i class="fa fa-check-circle pull-right" aria-hidden="true"></i>
+                                        </li>
+                                        <li>
+                                            <p class="pull-left multipleGrades"> 6th</p>
+                                            <i class="fa fa-check-circle pull-right" aria-hidden="true"></i>
+                                        </li>
+                                        <li>
+                                            <p class="pull-left multipleGrades"> 7th</p>
+                                            <i class="fa fa-check-circle pull-right" aria-hidden="true"></i>
+                                        </li>
+                                        <li>
+                                            <p class="pull-left multipleGrades"> 8th</p>
+                                            <i class="fa fa-check-circle pull-right" aria-hidden="true"></i>
+                                        </li>
+                                        <li>
+                                            <p class="pull-left multipleGrades"> 9th</p>
+                                            <i class="fa fa-check-circle pull-right" aria-hidden="true"></i>
+                                        </li>
+                                        <li>
+                                            <p class="pull-left multipleGrades"> 10th</p>
+                                            <i class="fa fa-check-circle pull-right" aria-hidden="true"></i>
+                                        </li>
+                                        <li>
+                                            <p class="pull-left multipleGrades"> 11th</p>
+                                            <i class="fa fa-check-circle pull-right" aria-hidden="true"></i>
+                                        </li>
+                                        <li>
+                                            <p class="pull-left multipleGrades"> 12th</p>
+                                            <i class="fa fa-check-circle pull-right" aria-hidden="true"></i>
+                                        </li>
+
+
+                                    </div>
+                                </form>
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- State select box -->
+            <div class="modal fade" id="stateModal" tabindex="-1" role="dialog" aria-labelledby="menuModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content modal-shadow">
+                        <div class="modal-header">
+                            <button type="button" class="close in" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body selectbox-body">
+                            <div class="container">
+                                <div class="col-xs-12 login-heading">
+                                    <h1>States</h1>
+                                </div>
+
+                                <form class="profile-editable">
+                                    <div class="col-xs-12">
+                                        <div id="custom-search-input">
+                                            <div class="input-group">
+                                                <input type="search" class="form-control input-lg search-input-field input-emp" id="state_search" placeholder="Search State" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 school-selecbox-listing">
+                                        <ul class="states_popup sp">
+
+                                        </ul>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grading Popup -->
+            <div class="modal fade" id="gradingModal" tabindex="-1" role="dialog" aria-labelledby="menuModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content modal-shadow">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body selectbox-body">
+                            <div class="container" id="grade_modal">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- feedback fields -->
+            <div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="menuModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content modal-shadow">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body login-body" style="padding-bottom: 2em;">
+                            <div class="container">
+                        <!-- <div class="col-xs-12 login-heading">
+                            <h1>Gives <br> Feedback</h1>
+                            <form>
+                                <textarea class="form-control" rows="8" id="comment"></textarea>
+                            </form>
+
+                        </div>
+
+                            <div class="modal_footer">
+
+                                <button type="button" class="btn btn-secondary btn-lg btn-block btn-search" data-toggle="modal" data-target="#gradeSuccessModal" data-dismiss="modal">Submit</button>
+
+                            </div> -->
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Graded Succesfully -->
+
+        <div class="modal fade" id="gradeSuccessModal" tabindex="-1" role="dialog" aria-labelledby="menuModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content modal-shadow">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body login-body" style="padding-bottom: 2em;">
+                        <div class="container">
+                            <div class="col-xs-12 login-heading gradeSuccessful">
+                                <h1>Teacher Is Successfully Graded With</h1>
+                                <p class="A_grade">A</p>
+
+                            </div>
+
+                            <div class="modal_footer">
+
+                                <button type="button" class="btn btn-secondary btn-lg btn-block btn-search" data-dismiss="modal">Thank You</button>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- edit comment modal -->
+
+        <div class="editComment"></div>
+
+
+        <!-- jQuery first, then Tether, then Bootstrap JS. -->
+        <script src="js/jquery-3.1.1-slim.min.js"></script>
+        <script src="js/jquery-3.2.1.js"></script>
+        <script src="select2/dist/js/select2.min.js"></script>
+        <script src="js/tether.min.js" ></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/select2.min.js"></script>
+        <script type="text/javascript" src="js/toastr.min.js"></script>
+        <script src="js/custom.js"></script>
+        <script type="text/javascript"></script>
+        <!-- JS Files Added by Khuram -->
+        <script type="text/javascript" src="js/custom2.js"></script>
+        <script type="text/javascript" src="js/validationfunctions.js"></script>
+        <script type="text/javascript" src="js/topteachers.js"></script>
+        <script type="text/javascript" src="js/addschool.js"></script>
+        <script type="text/javascript" src="js/addteacher.js"></script>
+        <script type="text/javascript" src="js/editschool.js"></script>
+        <script type="text/javascript" src="js/editteacher.js"></script>
+        <script type="text/javascript" src="js/search.js"></script>
+        <script type="text/javascript" src="js/jquery.mask.min.js"></script>
+        <script type="text/javascript" src="js/load-image.all.min.js"></script>
+
+
+
+        <script type="text/javascript" src="js/delete_comment.js"></script>
+        <script type="text/javascript" src="js/edit_comment.js"></script>
+        <script type="text/javascript" src="js/profile_update.js"></script>
+
+        <!-- JS Files Added by Bilal -->
+        <script type="text/javascript" src="js/alertify.min.js"></script>
+        <script type="text/javascript" src="js/faq.js"></script>
+        <script type="text/javascript" src="js/aboutUs.js"></script>
+        <script type="text/javascript" src="js/login.js"></script>
+        <script type="text/javascript" src="js/signOut.js"></script>
+        <script type="text/javascript" src="js/forgotPassword.js"></script>
+        <script type="text/javascript" src="js/pregister.js" ></script>
+        <script type="text/javascript" src="js/sRegister.js"></script>
+        <script type="text/javascript" src="js/fetchStates.js"></script>
+        <script type="text/javascript" src="js/teacher_detail.js"></script>
+        <script type="text/javascript" src="js/tDetailbyParent.js"></script>
+        <script type="text/javascript" src="js/teacherGrade.js"></script>
+        <script type="text/javascript" src="js/school_detail.js"></script>
+        <script type="text/javascript" src="js/profile.js"></script>
+        <script type="text/javascript" src="js/select2_custom.js"></script>
+        <script type="text/javascript" src="js/multipleGrades.js"></script>
+        <script type="text/javascript" src="js/profilePic.js"></script>
+        <!-- <script type="text/javascript" src="js/offline.js"></script> -->
+
+        <script type="text/javascript">
+        // added by bilal
+
+        localStorage.setItem("user_img_url", "https://teachingsidebyside.com/uploads/User")
+        if(localStorage.getItem("api_token") == null || localStorage.getItem("api_token") == "null"){
+            document.getElementById('menu_pro').style.display = "none";
+        }
+        else{
+            document.getElementById('menu_pro').style.display = "block";
+        }
+        if(localStorage.getItem("image") == null || localStorage.getItem("image") == "null"){
+            $(".pro_img").attr('src', 'images/top-io.jpg')
+        }
+        else{
+            console.log("image",`${localStorage.getItem("user_img_url")}/${localStorage.getItem("image")}`)
+            $(".pro_img").attr('src', `${localStorage.getItem("user_img_url")}/${localStorage.getItem("image")}`)
+        }
+
+        document.getElementsByClassName('pro_name')[0].innerHTML = `${localStorage.getItem("first_name")} ${localStorage.getItem("last_name")}`;
+
+        if(localStorage.getItem("email") == null || localStorage.getItem("email") == "null" ){
+           document.getElementsByClassName('pro_email')[0].innerHTML = "";
+
+       }
+       else{
+           document.getElementsByClassName('pro_email')[0].innerHTML = localStorage.getItem("email");
+       }
+
+       if(localStorage.getItem("api_token")){
+        $(".loginClass").empty();
+        $(".signoutClass").html();
+    }
+    else{
+        $(".signoutClass").empty();
+        $(".loginClass").show();
+    }
+    localStorage.setItem("base_url", "https://teachingsidebyside.com/api");
+    localStorage.setItem("loader", "http://preloaders.net/preloaders/287/Filling%20broken%20ring.gif")
+
+    toastr.options = {
+      "closeButton": false,
+      "debug": false,
+      "newestOnTop": false,
+      "progressBar": false,
+      "positionClass": "toast-top-full-width",
+      "preventDuplicates": true,
+      "onclick": null,
+      "showDuration": "300",
+      "hideDuration": "1000",
+      "timeOut": "5000",
+      "extendedTimeOut": "1000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+  }
+        // toastr.warning('My name is Inigo Montoya. You killed my father, prepare to die!');
+
+        // end
+    </script>
+</body>
+
+</html>
